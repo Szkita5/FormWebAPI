@@ -7,12 +7,10 @@ namespace WebAPI1.Models
 {
     public class Employee
     {
-        public int Id { get; set; }
+        public int Id { get; set; } = 0;
 
-        public DateTimeOffset Birthday { get; set; }
+        public string FirstName { get; set; } = "";
 
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
+        public string LastName { get; set; } = "";
     }
 }
