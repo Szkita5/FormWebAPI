@@ -1,1 +1,7 @@
-<p>table works!</p>
+<div class="row">
+  <div *ngFor="let employee of employees" class="shadow col-sm-4 p-3">
+    <app-employee-card [employee]="employee"></app-employee-card>
+  </div>
+</div>
+
+

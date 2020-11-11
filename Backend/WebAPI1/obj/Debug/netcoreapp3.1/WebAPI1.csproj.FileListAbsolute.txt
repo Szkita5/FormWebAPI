@@ -152,3 +152,5 @@ C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.Mv
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.dll
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.pdb
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.genruntimeconfig.cache
+C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json

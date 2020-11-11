@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IEmployee } from '../IEmployee.interface';
 
 @Component({
   selector : 'app-form',
@@ -6,9 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
-  Property: any = {
-    "Id": 1,
-    "FirstName": "Foo",
-    "LastName": "Bar"
-  }
+
 }

@@ -1,21 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
+import { HiringService } from './services/hiring.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { EmployeeCardComponent } from './employee-card/employee-card.component';
 
+
+const appRoutes: Routes = [
+  {path:'', component: TableComponent},
+  {path:'form', component: FormComponent},
+  {path:'table', component: TableComponent}
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    TableComponent
-  ],
+    TableComponent,
+    NavBarComponent,
+      EmployeeCardComponent
+   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    HiringService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HiringService } from '../services/hiring.service';
+import { IEmployee } from '../IEmployee.interface';
 
 @Component({
   selector: 'app-table',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
+  employees: Array<IEmployee>;
+  constructor(private hiringService: HiringService) { }
 
   ngOnInit(): void {
+    this.hiringService.getAllEmployees().subscribe(
+        data => {
+          this.employees = data;
+          console.log(data);
+        }, error => {
+          console.log(error);
+        }
+      );
   }
 
 }
