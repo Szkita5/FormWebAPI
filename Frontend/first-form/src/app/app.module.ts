@@ -11,7 +11,7 @@ import { TableComponent } from './table/table.component';
     AppComponent,
     FormComponent,
     TableComponent
-   ],
+  ],
   imports: [
     BrowserModule
   ],
