@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IEmployee } from '../IEmployee.interface';
 
 @Component({
@@ -6,6 +7,14 @@ import { IEmployee } from '../IEmployee.interface';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
+  constructor(private router: Router) {}
 
+  ngOnInit() {
+
+  }
+
+  onBack(){
+    this.router.navigate(['/'])
+  }
 }

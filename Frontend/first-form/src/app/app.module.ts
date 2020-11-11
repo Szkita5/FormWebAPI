@@ -10,12 +10,14 @@ import { TableComponent } from './table/table.component';
 import { HiringService } from './services/hiring.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EmployeeCardComponent } from './employee-card/employee-card.component';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 
 
 const appRoutes: Routes = [
   {path:'', component: TableComponent},
   {path:'form', component: FormComponent},
-  {path:'table', component: TableComponent}
+  {path:'table', component: TableComponent},
+  {path:'employee-detail/:id', component: EmployeeDetailComponent}
 ]
 
 @NgModule({
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     FormComponent,
     TableComponent,
     NavBarComponent,
-      EmployeeCardComponent
+    EmployeeCardComponent,
+    EmployeeDetailComponent
    ],
   imports: [
     BrowserModule,

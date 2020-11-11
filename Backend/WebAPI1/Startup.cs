@@ -27,6 +27,7 @@ namespace WebAPI1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
 
             services.AddDbContext<EmployeeContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("EmployeeContext")));
@@ -41,6 +42,8 @@ namespace WebAPI1
             }
 
             app.UseRouting();
+
+            app.UseCors(m => m.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseAuthorization();
 

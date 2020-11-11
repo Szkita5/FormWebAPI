@@ -9,11 +9,11 @@ namespace WebAPI1.Data
 {
     public class EmployeeContext : DbContext
     {
-        public EmployeeContext (DbContextOptions<EmployeeContext> options)
-            : base(options)
+        public EmployeeContext (DbContextOptions<EmployeeContext> options) : base(options)
         {
+
         }
 
-        public DbSet<WebAPI1.Models.Employee> Employee { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     }
 }

@@ -1,22 +1,22 @@
 [
   {
-    "Id":1,
-    "FirstName":"Foo",
-    "LastName:":"Bar"
+    "id":1,
+    "firstName":"Foo",
+    "lastName":"Bar"
   },
   {
-    "Id":2,
-    "FirstName":"Foo2",
-    "LastName:":"Bar2"
+    "id":2,
+    "firstName":"Foo2",
+    "lastName":"Bar2"
   },
   {
-    "Id":31,
-    "FirstName":"Foo3",
-    "LastName:":"Bar3"
+    "id":31,
+    "firstName":"Foo3",
+    "lastName":"Bar3"
   },
   {
-    "Id":31,
-    "FirstName":"Foo3",
-    "LastName:":"Bar3"
+    "id":31,
+    "firstName":"Foo3",
+    "lastName":"Bar3"
   }
 ]

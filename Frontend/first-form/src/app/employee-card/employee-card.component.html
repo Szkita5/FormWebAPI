@@ -1,8 +1,22 @@
 <div class="card">
-  <div class="card-body p-1" >
-    <h2>{{employee.FirstName}}</h2>
-    <h2>{{employee.LastName}}</h2>
-    <h5>{{employee.Id}}</h5>
+  <div class ="card-img-wrapper">
+    <img class="card-img-top" src="assets/images/portrait.png">
+    <ul class="list-inline text-center member-icons animate">
+      <li class="list-inline-item">
+        <button class="btn btn-primary" routerLink="/employee-detail/{{employee.id}}">Edit</button>
+      </li>
+      <li class="list-inline-item">
+        <button class="btn btn-delete">Delete</button>
+      </li>
+    </ul>
   </div>
+
+  <img class="card-body p-1" >
+    <h2>{{employee.firstName}}</h2>
+    <h3>{{employee.lastName}}</h3>
+    <h5>{{employee.id}}</h5>
+
+
+
 </div>
 
