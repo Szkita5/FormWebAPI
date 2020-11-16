@@ -1,6 +1,5 @@
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\bin\Debug\netcoreapp3.1\WebAPI1.exe
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.csprojAssemblyReference.cache
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.AssemblyInfoInputs.cache
@@ -152,5 +151,4 @@ C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.Mv
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.dll
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.pdb
 C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\WebAPI1.genruntimeconfig.cache
-C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
-C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
+C:\Users\geory\Dev\FormWebAPI\Backend\WebAPI1\obj\Debug\netcoreapp3.1\scopedcss\bundle\WebAPI1.styles.css

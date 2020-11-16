@@ -5,13 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
-import { AppComponent } from './app.component';
-import { FormComponent } from './form/form.component';
-import { TableComponent } from './table/table.component';
+import { AppComponent } from './components/app.component';
+import { FormComponent } from './components/form.component';
+import { TableComponent } from './components/table.component';
 import { HiringService } from './services/hiring.service';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { EmployeeCardComponent } from './employee-card/employee-card.component';
-import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { NavBarComponent } from './components/nav-bar.component';
+import { EmployeeCardComponent } from './components/employee-card.component';
+import { EmployeeDetailComponent } from './components/employee-detail.component';
 
 
 const appRoutes: Routes = [

@@ -29,8 +29,8 @@ namespace WebAPI1
             services.AddControllers();
             services.AddCors();
 
-            services.AddDbContext<EmployeeContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("EmployeeContext")));
+            services.AddDbContext<DataContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

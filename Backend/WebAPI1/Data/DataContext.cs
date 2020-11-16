@@ -7,9 +7,9 @@ using WebAPI1.Models;
 
 namespace WebAPI1.Data
 {
-    public class EmployeeContext : DbContext
+    public class DataContext : DbContext
     {
-        public EmployeeContext (DbContextOptions<EmployeeContext> options) : base(options)
+        public DataContext (DbContextOptions<DataContext> options) : base(options)
         {
 
         }

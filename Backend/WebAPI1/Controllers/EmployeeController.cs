@@ -15,9 +15,9 @@ namespace WebAPI1.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly EmployeeContext ec;
+        private readonly DataContext ec;
 
-        public EmployeeController(EmployeeContext ec)
+        public EmployeeController(DataContext ec)
         {
             this.ec = ec;
         }
@@ -28,6 +28,14 @@ namespace WebAPI1.Controllers
         {
             var employees = await ec.Employees.ToListAsync();
             return Ok(employees);
+        }
+
+        // GET: api/employee
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetEmployee(int id)
+        {
+            Employee employee = await ec.Employees.FindAsync(id);
+            return Ok(employee);
         }
 
         // POST: api/employee/add?firstname=John&lastname=Johnson 

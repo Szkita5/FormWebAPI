@@ -27,6 +27,14 @@ export class HiringService {
     );
   }
 
+  getEmployee(id: number) : Observable<IEmployee> {
+    return this.http.get('http://localhost:5000/api/employee/' + id).pipe(
+      map(data => {
+        return <IEmployee>data;
+      })
+    );
+  }
+
   //ToDo: Uding any, because we do not want to send the Id
   addNewEmployee(newEmployee : any) : Observable<any> {
     return this.http.post<any>('http://localhost:5000/api/employee/post', newEmployee);
@@ -35,4 +43,6 @@ export class HiringService {
   deleteEmployee(id: number) : Observable<any> {
     return this.http.delete('http://localhost:5000/api/employee/delete/' + id );
   }
+
+
 }

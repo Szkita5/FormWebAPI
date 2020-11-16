@@ -6,8 +6,35 @@ import { HiringService } from '../services/hiring.service';
 
 @Component({
   selector : 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  template: `
+  <div class="card">
+    <div class="card-header">
+      Add New Employee
+    </div>
+    <div class="card-body">
+      <form [formGroup]="newEmployeeForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group col-xs-12">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" formControlName="firstName">
+        </div>
+
+        <div class="form-group col-xs-12">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" formControlName="lastName">
+        </div>
+
+        <div class="form-group col-xs-12">
+          <button type="submit" class="btn btn-primary mr-2">Save</button>
+          <button type="reset" class="btn btn-primary mr-2">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <button (click)='onBack()' class="btn btn-primary" >Back</button>
+  `,
+  styles: []
 })
 export class FormComponent implements OnInit {
 
