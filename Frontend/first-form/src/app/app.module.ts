@@ -4,7 +4,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-
 import { AppComponent } from './components/app.component';
 import { FormComponent } from './components/form.component';
 import { TableComponent } from './components/table.component';
@@ -12,13 +11,14 @@ import { HiringService } from './services/hiring.service';
 import { NavBarComponent } from './components/nav-bar.component';
 import { EmployeeCardComponent } from './components/employee-card.component';
 import { EmployeeDetailComponent } from './components/employee-detail.component';
+import { EmployeeDetailResolveService } from './services/employee-detail-resolve.service';
 
 
 const appRoutes: Routes = [
   {path:'', component: TableComponent},
   {path:'form', component: FormComponent},
   {path:'table', component: TableComponent},
-  {path:'employee-detail/:id', component: EmployeeDetailComponent}
+  {path:'employee-detail/:id', component: EmployeeDetailComponent, resolve: {ers: EmployeeDetailResolveService}}
 ]
 
 @NgModule({
@@ -35,10 +35,11 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' })
   ],
   providers: [
-    HiringService
+    HiringService,
+    EmployeeDetailResolveService
   ],
   bootstrap: [AppComponent]
 })

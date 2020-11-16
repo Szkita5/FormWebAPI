@@ -25,7 +25,7 @@ export class TableComponent implements OnInit {
       }, error => {
         console.log(error);
       }
-      );
+    );
     }
 
   }

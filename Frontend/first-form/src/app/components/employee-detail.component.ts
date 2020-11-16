@@ -31,32 +31,43 @@ import { delay } from 'rxjs/operators';
     </form>
     <br/><br/>
 
+    <button (click)="onPreviousEmployee()" class="btn btn-primary">Previous Employee</button>
     <button (click)="onNextEmployee()" class="btn btn-primary">Next Employee</button>
   `,
   styles: []
 })
 export class EmployeeDetailComponent implements OnInit {
 
-  public employee : IEmployee;
+  public employee : IEmployee = {id: 0, firstName: "First", lastName: "Last"}
   public employeeId: number;
   public employeeDetailForm : FormGroup;
 
   constructor(private route: ActivatedRoute, private router: Router, private hiringService: HiringService) { }
 
   ngOnInit() {
+    // Read EmployeeId from route
     this.employeeId = Number(this.route.snapshot.params['id']);
 
-    this.route.params.subscribe(
-      (params) => {
-        this.employeeId = Number(params['id']);
-      }
-    )
 
-    this.getCurrentEmployee();
+    // Create subscriotion to update EmployeeId on navigation
+    // this.route.params.subscribe(
+    //   (params) => {
+    //     this.employeeId = Number(params['id']);
+    //     this.getCurrentEmployee();
+    //   }
+    // );
+
+    this.route.data.subscribe(
+      (data: IEmployee) => {
+        this.employee = data['ers'];
+        this.employeeId = this.employee.id;
+        console.log(this.employee);
+      }
+    );
 
     this.employeeDetailForm = new FormGroup({
-      firstNameField: new FormControl(),
-      lastNameField: new FormControl()
+      firstNameField: new FormControl(this.employee.firstName),
+      lastNameField: new FormControl(this.employee.lastName)
     });
 
   }
@@ -66,20 +77,23 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   onNextEmployee() {
-    this.employeeId += 1;
     this.router.navigate(['employee-detail', this.employeeId + 1]);
-    this.getCurrentEmployee();
-
   }
 
-  getCurrentEmployee() {
-    this.hiringService.getEmployee(this.employeeId).subscribe(
-      data => {
-        console.log(data);
-        this.employee = data;
-      }
-    );
+  onPreviousEmployee() {
+    if(this.employeeId > 1) {
+      this.router.navigate(['employee-detail', this.employeeId - 1]);
+    }
   }
+
+  // getCurrentEmployee() {
+  //   this.hiringService.getEmployee(this.employeeId).subscribe(
+  //     data => {
+  //       console.log('asd', data);
+  //       this.employee = data;
+  //     }, error => {console.log(error);}
+  //   );
+  // }
 
 
 

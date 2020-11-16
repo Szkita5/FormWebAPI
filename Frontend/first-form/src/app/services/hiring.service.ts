@@ -30,7 +30,14 @@ export class HiringService {
   getEmployee(id: number) : Observable<IEmployee> {
     return this.http.get('http://localhost:5000/api/employee/' + id).pipe(
       map(data => {
-        return <IEmployee>data;
+        try {
+          if (data.hasOwnProperty("id")) {
+            return <IEmployee>data;
+          }
+        } catch (error) {
+          throw new TypeError("No employee with specified Id")
+        }
+
       })
     );
   }
