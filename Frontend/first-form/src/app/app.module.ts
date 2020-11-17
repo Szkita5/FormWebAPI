@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { AppComponent } from './components/app.component';
 import { FormComponent } from './components/form.component';
@@ -12,6 +13,7 @@ import { NavBarComponent } from './components/nav-bar.component';
 import { EmployeeCardComponent } from './components/employee-card.component';
 import { EmployeeDetailComponent } from './components/employee-detail.component';
 import { EmployeeDetailResolveService } from './services/employee-detail-resolve.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
@@ -35,7 +37,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' })
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
+    ButtonsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     HiringService,

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,24 +28,13 @@ namespace WebAPI1.Controllers
             return Ok(employees);
         }
 
-        // GET: api/employee
+        // GET: api/employee/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmployee(int id)
         {
             Employee employee = await ec.Employees.FindAsync(id);
+            employee.birthDate = employee.birthDate.Date;
             return Ok(employee);
-        }
-
-        // POST: api/employee/add?firstname=John&lastname=Johnson 
-        [HttpPost("add")]
-        public async Task<IActionResult> AddEmployee(string firstName, string lastName)
-        {
-            Employee newEmployee = new Employee();
-            newEmployee.FirstName = firstName;
-            newEmployee.LastName = lastName;
-            await ec.Employees.AddAsync(newEmployee);
-            await ec.SaveChangesAsync();
-            return Ok(newEmployee);
         }
 
         // POST: api/employee/post --Post data in JSON format
@@ -59,7 +46,29 @@ namespace WebAPI1.Controllers
             return Ok(newEmployee);
         }
 
-        // POST: api/employee/delete --Delete employee by Id
+        // PUT: api/employee/edit --Put updated employee in JSON format
+        [HttpPut("edit")]
+        public async Task<IActionResult> ModifyEmployee(Employee newEmployee)
+        {
+            Employee oldEmployee = await ec.Employees.FindAsync(newEmployee.id);
+            if (oldEmployee != null)
+            {
+                oldEmployee.firstName = newEmployee.firstName;
+                oldEmployee.lastName = newEmployee.lastName;
+                oldEmployee.gender = newEmployee.gender;
+                oldEmployee.birthDate = newEmployee.birthDate;
+                oldEmployee.email = newEmployee.email;
+                oldEmployee.phoneNumber = newEmployee.phoneNumber;
+                await ec.SaveChangesAsync();
+            } else
+            {
+                return NotFound("No employee with specified Id.");
+            }
+
+            return Ok(newEmployee);
+        }
+
+        // DELETE: api/employee/delete --Delete employee by Id
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {

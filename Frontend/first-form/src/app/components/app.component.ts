@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IEmployee } from '../IEmployee.interface';
+import { Gender, IEmployee } from '../IEmployee.interface';
 import { HiringService } from '../services/hiring.service';
 
 @Component({

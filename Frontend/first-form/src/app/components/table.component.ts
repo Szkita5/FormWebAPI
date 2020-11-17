@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HiringService } from '../services/hiring.service';
-import { IEmployee } from '../IEmployee.interface';
+import { Gender, IEmployee } from '../IEmployee.interface';
 
 @Component({
   selector: 'app-table',

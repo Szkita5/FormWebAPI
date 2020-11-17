@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IEmployee } from '../IEmployee.interface';
+import { Gender, IEmployee } from '../IEmployee.interface';
 import { HiringService } from '../services/hiring.service';
 
 @Component({
@@ -22,7 +22,6 @@ import { HiringService } from '../services/hiring.service';
       <img class="card-body p-1" >
       <h2>{{employee.firstName}}</h2>
       <h3>{{employee.lastName}}</h3>
-      <h5>{{employee.id}}</h5>
     </div>
   `,
   styles: [`

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using WebAPI1.Data;
+using Newtonsoft.Json.Serialization;
 
 namespace WebAPI1
 {

@@ -51,5 +51,7 @@ export class HiringService {
     return this.http.delete('http://localhost:5000/api/employee/delete/' + id );
   }
 
-
+  modifyEmployee(newEmployee: IEmployee) : Observable<any> {
+    return this.http.put('http://localhost:5000/api/employee/edit', newEmployee);
+  }
 }
