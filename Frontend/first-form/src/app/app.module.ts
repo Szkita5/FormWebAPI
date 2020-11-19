@@ -14,12 +14,15 @@ import { EmployeeCardComponent } from './components/employee-card.component';
 import { EmployeeDetailComponent } from './components/employee-detail.component';
 import { EmployeeDetailResolveService } from './services/employee-detail-resolve.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmployeeInfoComponent } from './components/employee-info.component';
+import { AllEmployeesResolveService } from './services/all-employees-resolve.service';
 
 
 const appRoutes: Routes = [
-  {path:'', component: TableComponent},
+  {path:'', component: TableComponent, resolve: {aer: AllEmployeesResolveService}},
   {path:'form', component: FormComponent},
-  {path:'table', component: TableComponent},
+  {path:'table', component: TableComponent, resolve: {aer: AllEmployeesResolveService}},
+  {path:'employee-info/:id', component: EmployeeInfoComponent, resolve: {ers: EmployeeDetailResolveService}},
   {path:'employee-detail/:id', component: EmployeeDetailComponent, resolve: {ers: EmployeeDetailResolveService}}
 ]
 
@@ -30,7 +33,8 @@ const appRoutes: Routes = [
     TableComponent,
     NavBarComponent,
     EmployeeCardComponent,
-    EmployeeDetailComponent
+    EmployeeDetailComponent,
+    EmployeeInfoComponent
    ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     HiringService,
-    EmployeeDetailResolveService
+    EmployeeDetailResolveService,
+    AllEmployeesResolveService
   ],
   bootstrap: [AppComponent]
 })

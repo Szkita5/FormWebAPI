@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-employee-detail',
   template: `
-    <button (click)='onBack()' class="btn btn-primary" >Back</button>
+    <button (click)='onBack()' class="btn btn-outline-primary" >Back</button>
     <br/><br>
     Selected employee is {{employee.firstName}} {{employee.lastName}}. <br><br>
 
@@ -18,11 +18,17 @@ import { DatePipe } from '@angular/common';
       <div class="form-group col-xs-12">
         <label for="employee.firstName">First Name</label>
         <input type="text" class="form-control" formControlName="firstNameField">
+        <span class="error-block" *ngIf="!firstName.valid && firstName.touched">
+          First name is required.
+        </span>
       </div>
 
       <div class="form-group col-xs-12">
         <label for="employee.lastName">Last Name</label>
         <input type="text" class="form-control" formControlName="lastNameField">
+        <span class="error-block" *ngIf="!lastName.valid && lastName.touched">
+          Last name is required.
+        </span>
       </div>
 
       <label for="employee.gender">Gender</label><br>
@@ -37,30 +43,34 @@ import { DatePipe } from '@angular/common';
       <div class="form-group col-xs-3">
         <label for="employee.birthDate">Date of Birth</label>
         <input type="date" class="form-control" formControlName="birthDateField">
+        <span class="error-block" *ngIf="!birthDate.valid && birthDate.touched">
+          Date is required.
+        </span>
       </div>
 
       <div class="form-group col-xs-12">
-        <label for="employee.email">e-mail address</label>
+        <label for="employee.email">E-mail address</label>
         <input type="text" class="form-control" formControlName="emailField">
+        <span class="error-block" *ngIf="!email.valid && email.touched">
+          Enter a valid e-mail address.
+        </span>
       </div>
 
       <div class="form-group col-xs-12">
-        <label for="employee.lastName">Phone</label>
+        <label for="employee.lastName">Phone number</label>
         <input type="text" class="form-control" formControlName="phoneNumberField">
+        <span class="error-block" *ngIf="!phoneNumber.valid && phoneNumber.touched">
+          Enter a valid phone number.
+        </span>
       </div>
 
 
       <div class="form-group col-xs-12">
         <button type="submit" class="btn btn-primary mr-2">Save</button>
-        <button type="reset" class="btn btn-danger mr-2">Cancel</button>
+        <button (click)='onBack()' type="reset" class="btn btn-danger mr-2">Cancel</button>
       </div>
     </form>
     <br/><br/>
-
-    <div class="btn-group col-12">
-      <button (click)="onPreviousEmployee()" class="btn btn-outline-primary mr-2">Previous Employee</button>
-      <button (click)="onNextEmployee()" class="btn btn-outline-primary mr-2">Next Employee</button>
-    </div>
   `,
   styles: []
 })
@@ -81,9 +91,8 @@ export class EmployeeDetailComponent implements OnInit {
       lastNameField: new FormControl(this.employee.lastName, Validators.required),
       genderField: new FormControl(this.employee.gender, Validators.required),
       birthDateField: new FormControl(this.employee.birthDate, Validators.required),
-      emailField: new FormControl(this.employee.email, Validators.email),
-      phoneNumberField: new FormControl(this.employee.phoneNumber)
-
+      emailField: new FormControl(this.employee.email, [Validators.required, Validators.email]),
+      phoneNumberField: new FormControl(this.employee.phoneNumber, [Validators.minLength(8), Validators.maxLength(10)])
     });
 
 
@@ -109,18 +118,11 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['/']);
+    this.router.navigate(['employee-info', this.employeeId]);
   }
 
-  onNextEmployee() {
-    this.router.navigate(['employee-detail', this.employeeId + 1]);
-  }
 
-  onPreviousEmployee() {
-    if(this.employeeId > 1) {
-      this.router.navigate(['employee-detail', this.employeeId - 1]);
-    }
-  }
+
 
   onSubmit() {
     if (this.employeeDetailForm.valid) {
@@ -137,12 +139,38 @@ export class EmployeeDetailComponent implements OnInit {
     newEmployee.id = this.employee.id;
     newEmployee.firstName = formVals.firstNameField;
     newEmployee.lastName = formVals.lastNameField;
-    newEmployee.gender = formVals.genderField;
+    newEmployee.gender = Number(formVals.genderField);
     newEmployee.birthDate = formVals.birthDateField;
     newEmployee.email = formVals.emailField;
-    newEmployee.phoneNumber = formVals.phoneNumberField;
+    newEmployee.phoneNumber = Number(formVals.phoneNumberField);
     console.log('submitting this: ', newEmployee)
 
     this.hiringService.modifyEmployee(newEmployee).subscribe();
+    this.router.navigate(['employee-info', this.employeeId]);
+  }
+
+  // Getter methods for form validation
+  get firstName() {
+    return this.employeeDetailForm.get('firstNameField') as FormControl;
+  }
+
+  get lastName() {
+    return this.employeeDetailForm.get('lastNameField') as FormControl;
+  }
+
+  get gender() {
+    return this.employeeDetailForm.get('genderField') as FormControl;
+  }
+
+  get birthDate() {
+    return this.employeeDetailForm.get('birthDateField') as FormControl;
+  }
+
+  get email() {
+    return this.employeeDetailForm.get('emailField') as FormControl;
+  }
+
+  get phoneNumber() {
+    return this.employeeDetailForm.get('phoneNumberField') as FormControl;
   }
 }

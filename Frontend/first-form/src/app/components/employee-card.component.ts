@@ -11,10 +11,10 @@ import { HiringService } from '../services/hiring.service';
         <img class="card-img-top" src="assets/images/portrait.png">
         <ul class="list-inline text-center member-icons animate">
           <li class="list-inline-item">
-            <button (click)=onEdit() class="btn btn-primary">Edit</button>
+            <button (click)=onDetails() class="btn btn-primary">Details</button>
           </li>
           <li class="list-inline-item">
-            <button (click)=onDelete() class="btn btn-delete">Delete</button>
+            <button (click)=onDelete() class="btn btn-outline-danger">Delete</button>
           </li>
         </ul>
       </div>
@@ -74,13 +74,15 @@ export class EmployeeCardComponent{
 
   constructor(private router: Router, private hiringService : HiringService) { }
 
-  onEdit() {
-    this.router.navigate(['/employee-detail/' + this.employee.id])
+  onDetails() {
+    this.router.navigate(['/employee-info/' + this.employee.id])
   }
 
   onDelete() {
-    this.hiringService.deleteEmployee(this.employee.id).subscribe();
-
+    if(confirm('Are you sure you want to delete the records of '+ this.employee.firstName +' '+this.employee.lastName+'?')) {
+      this.hiringService.deleteEmployee(this.employee.id).subscribe();
+      this.router.navigate(['/']);
+    }
   }
 
 }

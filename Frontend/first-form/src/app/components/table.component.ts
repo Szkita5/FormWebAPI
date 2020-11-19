@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HiringService } from '../services/hiring.service';
 import { Gender, IEmployee } from '../IEmployee.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -16,16 +17,13 @@ import { Gender, IEmployee } from '../IEmployee.interface';
 export class TableComponent implements OnInit {
 
   employees: Array<IEmployee>;
-  constructor(private hiringService: HiringService) { }
+  constructor(private hiringService: HiringService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.hiringService.getAllEmployees().subscribe(
-      data => {
-        this.employees = data;
-      }, error => {
-        console.log(error);
+    this.route.data.subscribe(
+      (data: IEmployee[]) => {
+        this.employees = data['aer'];
       }
-    );
-    }
-
+    )
   }
+}
